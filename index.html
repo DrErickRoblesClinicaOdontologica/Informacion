@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smile Design Juárez | Excelencia en Odontología Estética</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    :root {
+      --color-negro: #121212;
+      --color-dorado: #D4AF37;
+      --dorado-claro: #F5E6B3;
+      --blanco: #FFFFFF;
+      --gris-oscuro: #2A2A2A;
+      --gris-claro: #F8F8F8;
+      --sombra: 0 4px 12px rgba(0,0,0,0.15);
+      --whatsapp: #25D366;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--gris-oscuro);
+      background-color: var(--blanco);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Popup Promoción */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .popup-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-container {
+      background-color: var(--blanco);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 90%;
+      width: 800px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      position: relative;
+      opacity: 0;
+      border: 2px solid var(--color-dorado);
+    }
+
+    .popup-overlay.active .popup-container {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .popup-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--color-negro);
+      color: var(--color-dorado);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      border: 2px solid var(--color-dorado);
+      z-index: 10;
+    }
+
+    .close-popup:hover {
+      background-color: var(--color-dorado);
+      color: var(--color-negro);
+      transform: rotate(90deg);
+    }
+
+    /* Header */
+    .header {
+      background-color: var(--color-negro);
+      padding: 15px 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: var(--sombra);
+      transition: all 0.3s ease;
+      border-bottom: 2px solid var(--color-dorado);
+    }
+
+    .header.scrolled {
+      padding: 10px 5%;
+      background-color: rgba(18, 18, 18, 0.98);
+      backdrop-filter: blur(5px);
+    }
+
+    .logo {
+      height: 80px;
+      width: auto;
+      max-width: 280px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled .logo {
+      height: 60px;
+      margin-bottom: 5px;
+    }
+
+    .direccion-header {
+      color: var(--dorado-claro);
+      font-size: 0.9rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .header.scrolled .direccion-header {
+      font-size: 0.8rem;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      color: var(--blanco);
+      padding: 180px 5% 80px;
+      margin-top: 140px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(212, 175, 55, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>') center/cover no-repeat;
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--color-negro);
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      color: var(--color-dorado);
+      font-size: 2.5rem;
+      line-height: 1.3;
+      animation: fadeInDown 1s ease both;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      animation: fadeIn 1s ease 0.3s both;
+    }
+
+    /* Botones de Contacto */
+    .btn-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      max-width: 400px;
+      margin: 30px auto 0;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .btn-whatsapp {
+      background-color: var(--color-dorado);
+      color: var(--color-negro);
+      box-shadow: var(--sombra);
+    }
+
+    .btn-whatsapp:hover {
+      background-color: var(--whatsapp);
+      color: var(--blanco);
+      border-color: var(--whatsapp);
+    }
+
+    .btn-llamar {
+      background-color: transparent;
+      color: var(--blanco);
+      border: 2px solid var(--color-dorado);
+    }
+
+    .btn-llamar:hover {
+      background-color: var(--color-dorado);
+      color: var(--color-negro);
+    }
+
+    .btn-llamar-internacional {
+      background-color: var(--color-negro);
+      color: var(--color-dorado);
+      border: 2px solid var(--color-dorado);
+    }
+
+    .btn-llamar-internacional:hover {
+      background-color: var(--color-dorado);
+      color: var(--color-negro);
+    }
+
+    .btn-contacto {
+      background-color: var(--color-dorado);
+      color: var(--color-negro);
+      padding: 14px 30px;
+      border-radius: 30px;
+      display: inline-block;
+      margin: 20px 0;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: var(--sombra);
+      transition: all 0.3s ease;
+      animation: fadeIn 1s ease 0.9s both;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--color-dorado);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-contacto:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      background-color: var(--color-negro);
+      color: var(--color-dorado);
+    }
+
+    /* Efecto de aura para WhatsApp */
+    .btn-whatsapp::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 40px;
+      border: 2px solid var(--whatsapp);
+      opacity: 0;
+      animation: pulse 2s infinite;
+    }
+
+    .btn-whatsapp:hover::after {
+      opacity: 0.7;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.7;
+      }
+      70% {
+        transform: scale(1.1);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+    }
+
+    .icon {
+      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover .icon {
+      transform: scale(1.1);
+    }
+
+    /* Secciones */
+    section {
+      padding: 80px 5%;
+      position: relative;
+    }
+
+    section:nth-child(even) {
+      background-color: var(--gris-claro);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--color-dorado);
+      margin: 15px auto 0;
+    }
+
+    /* Servicios */
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .servicio-item {
+      background: var(--blanco);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: var(--sombra);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .servicio-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--color-negro), var(--color-dorado));
+      opacity: 0;
+      z-index: -1;
+      transition: all 0.4s ease;
+    }
+
+    .servicio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .servicio-item:hover::before {
+      opacity: 0.05;
+    }
+
+    .servicio-item h3 {
+      color: var(--color-dorado);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      font-size: 1.4rem;
+    }
+
+    .servicio-item:hover h3 {
+      color: var(--color-negro);
+    }
+
+    .servicio-item h3 i {
+      margin-right: 15px;
+      color: var(--color-dorado);
+      transition: all 0.3s ease;
+      font-size: 1.6rem;
+    }
+
+    .servicio-item:hover h3 i {
+      transform: rotate(15deg) scale(1.1);
+      color: var(--color-negro);
+    }
+
+    .servicio-item p {
+      transition: all 0.3s ease;
+      color: var(--gris-oscuro);
+    }
+
+    .servicio-item:hover p {
+      color: var(--gris-oscuro);
+    }
+
+    /* Animaciones para los servicios */
+    .servicios-grid .servicio-item {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .servicios-grid .servicio-item:nth-child(1) { animation-delay: 0.1s; }
+    .servicios-grid .servicio-item:nth-child(2) { animation-delay: 0.2s; }
+    .servicios-grid .servicio-item:nth-child(3) { animation-delay: 0.3s; }
+    .servicios-grid .servicio-item:nth-child(4) { animation-delay: 0.4s; }
+    .servicios-grid .servicio-item:nth-child(5) { animation-delay: 0.5s; }
+    .servicios-grid .servicio-item:nth-child(6) { animation-delay: 0.6s; }
+    .servicios-grid .servicio-item:nth-child(7) { animation-delay: 0.7s; }
+
+    /* Galería */
+    .galeria-ads {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .galeria-ads img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: var(--sombra);
+      transition: all 0.5s ease;
+      cursor: pointer;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .galeria-ads img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .faq-item:nth-child(1) { animation-delay: 0.1s; }
+    .faq-item:nth-child(2) { animation-delay: 0.2s; }
+    .faq-item:nth-child(3) { animation-delay: 0.3s; }
+    .faq-item:nth-child(4) { animation-delay: 0.4s; }
+    .faq-item:nth-child(5) { animation-delay: 0.5s; }
+    .faq-item:nth-child(6) { animation-delay: 0.6s; }
+
+    .faq-item h3 {
+      color: var(--color-dorado);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    .faq-item h3:hover {
+      color: var(--color-negro);
+    }
+
+    .faq-item h3::before {
+      content: '+';
+      margin-right: 15px;
+      font-weight: bold;
+      color: var(--color-dorado);
+      transition: all 0.3s ease;
+      font-size: 1.5rem;
+    }
+
+    .faq-item.active h3::before {
+      content: '-';
+    }
+
+    .faq-item p {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      padding-left: 35px;
+    }
+
+    .faq-item.active p {
+      max-height: 200px;
+      margin-top: 10px;
+    }
+
+    /* Mapa */
+    .mapa-container {
+      margin-top: 30px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .mapa-container:hover {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .mapa {
+      width: 100%;
+      height: 250px;
+      border: none;
+      display: block;
+    }
+
+    /* Formulario de contacto */
+    .form-section {
+      background-color: var(--blanco);
+      border-radius: 10px;
+      padding: 40px 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: var(--sombra);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease 0.2s forwards;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .form-section:hover {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .form-title {
+      text-align: center;
+      color: var(--color-dorado);
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--color-negro);
+      font-size: 1rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background-color: var(--gris-claro);
+    }
+
+    .form-control:focus {
+      border-color: var(--color-dorado);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+      outline: none;
+      background-color: var(--blanco);
+    }
+
+    .submit-btn {
+      background-color: var(--color-negro);
+      color: var(--color-dorado);
+      border: 2px solid var(--color-dorado);
+      padding: 16px 25px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 15px;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(212, 175, 55, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+
+    .submit-btn:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--color-dorado);
+      color: var(--color-negro);
+      transform: translateY(-3px);
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(25, 25);
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(40, 40);
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--color-negro);
+      color: var(--dorado-claro);
+      padding: 40px 5%;
+      text-align: center;
+      position: relative;
+      border-top: 2px solid var(--color-dorado);
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-dorado), var(--dorado-claro));
+    }
+
+    .footer p {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+
+    .footer p:first-child {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--color-dorado);
+      margin-bottom: 20px;
+    }
+
+    .footer i {
+      color: var(--color-dorado);
+      margin-right: 8px;
+    }
+
+    /* Botón de traducción */
+    .translate-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--color-negro);
+      color: var(--color-dorado);
+      border: 2px solid var(--color-dorado);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 100;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease 1s forwards;
+    }
+
+    .translate-btn:hover {
+      background-color: var(--color-dorado);
+      color: var(--color-negro);
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    .translate-btn i {
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+
+    /* Animaciones personalizadas */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Efecto de scroll reveal */
+    .reveal {
+      position: relative;
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+    }
+
+    .reveal.active.fade-bottom {
+      animation: fadeInUp 1s ease;
+    }
+
+    .reveal.active.fade-left {
+      animation: fadeInLeft 1s ease;
+    }
+
+    .reveal.active.fade-right {
+      animation: fadeInRight 1s ease;
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .logo {
+        margin-bottom: 0;
+      }
+      
+      .direccion-header {
+        text-align: right;
+      }
+      
+      .servicios-grid, .galeria-ads {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .btn-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .hero {
+        margin-top: 100px;
+        padding-top: 150px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .mapa {
+        height: 350px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .servicios-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      .galeria-ads {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Popup Promoción -->
+  <div class="popup-overlay" id="hotSalePopup">
+    <div class="popup-container">
+      <button class="close-popup" id="closePopup">&times;</button>
+      <img src="promocion-dorada.jpg" alt="Promoción Exclusiva - Diseño de Sonrisa 30% OFF" class="popup-img">
+    </div>
+  </div>
+
+  <header class="header" id="mainHeader">
+    <img src="logo-smile-design.png" alt="Smile Design Juárez" class="logo">
+    <div class="direccion-header">
+      <i class="fas fa-map-marker-alt"></i> Av. Plutarco Elías Calles 315, Cd. Juárez
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 data-i18n="heroTitle">Excelencia en Odontología Estética</h1>
+      <p data-i18n="heroText">Transformamos sonrisas con técnicas avanzadas y un enfoque personalizado en Juárez.</p>
+      
+      <a href="#contacto" class="btn-contacto">
+        <i class="fas fa-calendar-check"></i> <span data-i18n="contactBtn">Reserva tu consulta</span>
+      </a>
+      
+      <div class="btn-container">
+        <a href="https://wa.me/52161470801653?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios" class="btn btn-whatsapp">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335 .157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="tel:61470801653" class="btn btn-llamar">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          <span data-i18n="callBtn">Llamar</span>
+        </a>
+        <a href="tel:+52161470801653" class="btn btn-llamar-internacional">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          <span data-i18n="callIntlBtn">Desde EE.UU.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <h2 class="section-title reveal fade-bottom" data-i18n="servicesTitle">Servicios Premium</h2>
+    <div class="servicios-grid">
+      <div class="servicio-item reveal fade-bottom">
+        <h3><i class="fas fa-sparkles"></i> <span data-i18n="service1">Diseño de Sonrisa Digital</span></h3>
+        <p data-i18n="service1Desc">Visualiza tu nueva sonrisa antes del tratamiento con nuestra tecnología 3D.</p>
+      </div>
+      <div class="servicio-item reveal fade-bottom">
+        <h3><i class="fas fa-gem"></i> <span data-i18n="service2">Carillas de Porcelana</span></h3>
+        <p data-i18n="service2Desc">La solución más natural y duradera para una sonrisa perfecta.</p>
+      </div>
+      <div class="servicio-item reveal fade-bottom">
+        <h3><i class="fas fa-snowflake"></i> <span data-i18n="service3">Blanqueamiento Profesional</span></h3>
+        <p data-i18n="service3Desc">Resultados inmediatos con nuestro sistema láser de última generación.</p>
+      </div>
+      <div class="servicio-item reveal fade-bottom">
+        <h3><i class="fas fa-crown"></i> <span data-i18n="service4">Coronas de Zirconio</span></h3>
+        <p data-i18n="service4Desc">Máxima estética y resistencia para restaurar tus dientes.</p>
+      </div>
+      <div class="servicio-item reveal fade-bottom">
+        <h3><i class="fas fa-teeth"></i> <span data-i18n="service5">Ortodoncia Invisible</span></h3>
+        <p data-i18n="service5Desc">Alinea tus dientes discretamente con alineadores transparentes.</p>
+      </div>
+      <div class="servicio-item reveal fade-bottom">
+        <h3><i class="fas fa-tooth"></i> <span data-i18n="service6">Restauraciones Estéticas</span></h3>
+        <p data-i18n="service6Desc">Reparamos tus dientes con materiales que imitan el esmalte natural.</p>
+      </div>
+      <div class="servicio-item reveal fade-bottom">
+        <h3><i class="fas fa-smile"></i> <span data-i18n="service7">Rejuvenecimiento Facial</span></h3>
+        <p data-i18n="service7Desc">Tratamientos combinados para armonizar sonrisa y rostro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section id="galeria">
+    <h2 class="section-title reveal fade-bottom" data-i18n="galleryTitle">Nuestros Resultados</h2>
+    <div class="galeria-ads">
+      <img src="antes-despues-1.jpg" alt="Transformación de sonrisa con carillas" class="reveal fade-left">
+      <img src="instalaciones-premium.jpg" alt="Clínica de lujo en Juárez" class="reveal fade-right">
+    </div>
+  </section>
+
+  <!-- Formulario de Contacto -->
+  <section id="contacto">
+    <div class="form-section">
+      <h2 class="form-title" data-i18n="formTitle">Consulta Personalizada</h2>
+      <form id="appointmentForm" action="https://formsubmit.co/erickrobles5821@gmail.com" method="POST">
+        <!-- Campos ocultos para FormSubmit -->
+        <input type="hidden" name="_subject" value="Nueva solicitud de cita - Smile Design">
+        <input type="hidden" name="_next" value="https://smiledesignjuarez.github.io/confirmacion.html">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        
+        <div class="form-group">
+          <label for="nombre" class="form-label" data-i18n="nameLabel">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" required data-i18n-placeholder="namePlaceholder" placeholder="Ingresa tu nombre completo">
+        </div>
+        
+        <div class="form-group">
+          <label for="motivo" class="form-label" data-i18n="reasonLabel">Servicio de interés</label>
+          <select id="motivo" name="motivo" class="form-control" required>
+            <option value="" disabled selected data-i18n="selectReason">Selecciona un servicio</option>
+            <option value="Diseño de Sonrisa" data-i18n="option1">Diseño de Sonrisa Digital</option>
+            <option value="Carillas" data-i18n="option2">Carillas de Porcelana</option>
+            <option value="Blanqueamiento" data-i18n="option3">Blanqueamiento Profesional</option>
+            <option value="Coronas" data-i18n="option4">Coronas de Zirconio</option>
+            <option value="Ortodoncia" data-i18n="option5">Ortodoncia Invisible</option>
+            <option value="Restauraciones" data-i18n="option6">Restauraciones Estéticas</option>
+            <option value="Rejuvenecimiento" data-i18n="option7">Rejuvenecimiento Facial</option>
+            <option value="Otro" data-i18n="option8">Otro</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="dia" class="form-label" data-i18n="dayLabel">Día preferido para consulta</label>
+          <select id="dia" name="dia" class="form-control" required>
+            <option value="" disabled selected data-i18n="selectDay">Selecciona un día</option>
+            <option value="Lunes" data-i18n="day1">Lunes</option>
+            <option value="Martes" data-i18n="day2">Martes</option>
+            <option value="Miércoles" data-i18n="day3">Miércoles</option>
+            <option value="Jueves" data-i18n="day4">Jueves</option>
+            <option value="Viernes" data-i18n="day5">Viernes</option>
+            <option value="Sábado" data-i18n="day6">Sábado</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="horario" class="form-label" data-i18n="timeLabel">Horario preferible</label>
+          <select id="horario" name="horario" class="form-control" required>
+            <option value="" disabled selected data-i18n="selectTime">Selecciona un horario</option>
+            <option value="Mañana (9am-12pm)" data-i18n="time1">Mañana (9am-12pm)</option>
+            <option value="Tarde (3pm-6pm)" data-i18n="time2">Tarde (3pm-6pm)</option>
+            <option value="Sábado (9am-2pm)" data-i18n="time3">Sábado (9am-2pm)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="telefono" class="form-label" data-i18n="phoneLabel">Teléfono de contacto</label>
+          <input type="tel" id="telefono" name="telefono" class="form-control" required placeholder="Ingresa tu número de teléfono">
+        </div>
+        
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-paper-plane"></i> <span data-i18n="submitBtn">Solicitar consulta</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2 class="section-title reveal fade-bottom" data-i18n="faqTitle">Preguntas Frecuentes</h2>
+    
+    <div class="faq-item reveal fade-bottom">
+      <h3 data-i18n="faq1">¿Qué diferencia tiene su diseño de sonrisa digital?</h3>
+      <p data-i18n="faq1Answer">Usamos tecnología 3D para mostrarte exactamente cómo quedará tu sonrisa después del tratamiento, permitiéndote participar activamente en el diseño.</p>
+    </div>
+    
+    <div class="faq-item reveal fade-bottom">
+      <h3 data-i18n="faq2">¿Cuánto duran las carillas de porcelana?</h3>
+      <p data-i18n="faq2Answer">Nuestras carillas premium pueden durar 15 años o más con los cuidados adecuados. Te enseñaremos cómo mantenerlas perfectas.</p>
+    </div>
+    
+    <div class="faq-item reveal fade-bottom">
+      <h3 data-i18n="faq3">¿El blanqueamiento dental daña los dientes?</h3>
+      <p data-i18n="faq3Answer">Nuestro sistema láser controlado es seguro y no daña el esmalte. Usamos geles remineralizantes para proteger tus dientes.</p>
+    </div>
+    
+    <div class="faq-item reveal fade-bottom">
+      <h3 data-i18n="faq4">¿Duele colocar carillas dentales?</h3>
+      <p data-i18n="faq4Answer">El procedimiento es mínimamente invasivo y realizamos anestesia local para mayor comodidad. La mayoría de pacientes reportan solo presión.</p>
+    </div>
+    
+    <div class="faq-item reveal fade-bottom">
+      <h3 data-i18n="faq5">¿Cómo sé si necesito ortodoncia antes de carillas?</h3>
+      <p data-i18n="faq5Answer">En tu consulta inicial evaluamos si necesitas alinear tus dientes primero para obtener resultados óptimos con carillas u otros tratamientos.</p>
+    </div>
+    
+    <div class="faq-item reveal fade-bottom">
+      <h3 data-i18n="faq6">¿Ofrecen financiamiento para los tratamientos?</h3>
+      <p data-i18n="faq6Answer">Sí, tenemos planes de pago flexibles y opciones de financiamiento para que puedas lograr la sonrisa que deseas sin preocupaciones.</p>
+    </div>
+  </section>
+
+  <section id="ubicacion">
+    <h2 class="section-title reveal fade-bottom" data-i18n="locationTitle">Nuestra Clínica</h2>
+    <div class="mapa-container reveal fade-bottom">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3483.622763784383!2d-106.4343879241366!3d31.4819999754399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e8d9c9b9e8c9b9%3A0x9e8c9b9e8c9b9e8c!2sAv.%20Plutarco%20El%C3%ADas%20Calles%20315%2C%20Ciudad%20Ju%C3%A1rez%2C%20Chih.!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" class="mapa" allowfullscreen="" loading="lazy" title="Ubicación de Smile Design Juárez"></iframe>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p><strong>Smile Design Juárez</strong></p>
+    <p><i class="fas fa-map-marker-alt"></i> Av. Plutarco Elías Calles 315, Ciudad Juárez, Chihuahua</p>
+    <p><i class="fas fa-clock"></i> <span data-i18n="hours">Horario</span>: Lunes a Viernes 9:00 AM - 6:00 PM | Sábados 9:00 AM - 2:00 PM</p>
+    <p><i class="fas fa-phone"></i> Tel: (614) 708-0165 | WhatsApp: +52 1 614-708-0165</p>
+    <p><i class="fas fa-envelope"></i> erickrobles5821@gmail.com</p>
+  </footer>
+
+  <!-- Botón de traducción flotante -->
+  <button id="translateBtn" class="translate-btn" title="Cambiar idioma">
+    <i class="fas fa-language"></i>
+    <span>ES/EN</span>
+  </button>
+
+  <script>
+    // Mostrar popup después de 3 segundos
+    setTimeout(function() {
+      document.getElementById('hotSalePopup').classList.add('active');
+    }, 3000);
+
+    // Cerrar popup al hacer clic en la X
+    document.getElementById('closePopup').addEventListener('click', function() {
+      document.getElementById('hotSalePopup').classList.remove('active');
+    });
+
+    // Cerrar popup al hacer clic fuera de la imagen
+    document.getElementById('hotSalePopup').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+      }
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        document.getElementById('mainHeader').classList.add('scrolled');
+      } else {
+        document.getElementById('mainHeader').classList.remove('scrolled');
+      }
+    });
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', function() {
+        this.parentElement.classList.toggle('active');
+      });
+    });
+
+    // Scroll reveal
+    function reveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
+      }
+    }
+    
+    window.addEventListener('scroll', reveal);
+    reveal(); // Para mostrar elementos que ya están visibles al cargar la página
+
+    // Traducciones completas
+    const translations = {
+      es: {
+        "title": "Smile Design Juárez | Excelencia en Odontología Estética",
+        "heroTitle": "Excelencia en Odontología Estética",
+        "heroText": "Transformamos sonrisas con técnicas avanzadas y un enfoque personalizado en Juárez.",
+        "contactBtn": "Reserva tu consulta",
+        "callBtn": "Llamar",
+        "callIntlBtn": "Desde EE.UU.",
+        "servicesTitle": "Servicios Premium",
+        "service1": "Diseño de Sonrisa Digital",
+        "service1Desc": "Visualiza tu nueva sonrisa antes del tratamiento con nuestra tecnología 3D.",
+        "service2": "Carillas de Porcelana",
+        "service2Desc": "La solución más natural y duradera para una sonrisa perfecta.",
+        "service3": "Blanqueamiento Profesional",
+        "service3Desc": "Resultados inmediatos con nuestro sistema láser de última generación.",
+        "service4": "Coronas de Zirconio",
+        "service4Desc": "Máxima estética y resistencia para restaurar tus dientes.",
+        "service5": "Ortodoncia Invisible",
+        "service5Desc": "Alinea tus dientes discretamente con alineadores transparentes.",
+        "service6": "Restauraciones Estéticas",
+        "service6Desc": "Reparamos tus dientes con materiales que imitan el esmalte natural.",
+        "service7": "Rejuvenecimiento Facial",
+        "service7Desc": "Tratamientos combinados para armonizar sonrisa y rostro.",
+        "galleryTitle": "Nuestros Resultados",
+        "formTitle": "Consulta Personalizada",
+        "nameLabel": "Nombre completo",
+        "namePlaceholder": "Ingresa tu nombre completo",
+        "reasonLabel": "Servicio de interés",
+        "selectReason": "Selecciona un servicio",
+        "option1": "Diseño de Sonrisa Digital",
+        "option2": "Carillas de Porcelana",
+        "option3": "Blanqueamiento Profesional",
+        "option4": "Coronas de Zirconio",
+        "option5": "Ortodoncia Invisible",
+        "option6": "Restauraciones Estéticas",
+        "option7": "Rejuvenecimiento Facial",
+        "option8": "Otro",
+        "dayLabel": "Día preferido para consulta",
+        "selectDay": "Selecciona un día",
+        "day1": "Lunes",
+        "day2": "Martes",
+        "day3": "Miércoles",
+        "day4": "Jueves",
+        "day5": "Viernes",
+        "day6": "Sábado",
+        "timeLabel": "Horario preferible",
+        "selectTime": "Selecciona un horario",
+        "time1": "Mañana (9am-12pm)",
+        "time2": "Tarde (3pm-6pm)",
+        "time3": "Sábado (9am-2pm)",
+        "phoneLabel": "Teléfono de contacto",
+        "submitBtn": "Solicitar consulta",
+        "faqTitle": "Preguntas Frecuentes",
+        "faq1": "¿Qué diferencia tiene su diseño de sonrisa digital?",
+        "faq1Answer": "Usamos tecnología 3D para mostrarte exactamente cómo quedará tu sonrisa después del tratamiento, permitiéndote participar activamente en el diseño.",
+        "faq2": "¿Cuánto duran las carillas de porcelana?",
+        "faq2Answer": "Nuestras carillas premium pueden durar 15 años o más con los cuidados adecuados. Te enseñaremos cómo mantenerlas perfectas.",
+        "faq3": "¿El blanqueamiento dental daña los dientes?",
+        "faq3Answer": "Nuestro sistema láser controlado es seguro y no daña el esmalte. Usamos geles remineralizantes para proteger tus dientes.",
+        "faq4": "¿Duele colocar carillas dentales?",
+        "faq4Answer": "El procedimiento es mínimamente invasivo y realizamos anestesia local para mayor comodidad. La mayoría de pacientes reportan solo presión.",
+        "faq5": "¿Cómo sé si necesito ortodoncia antes de carillas?",
+        "faq5Answer": "En tu consulta inicial evaluamos si necesitas alinear tus dientes primero para obtener resultados óptimos con carillas u otros tratamientos.",
+        "faq6": "¿Ofrecen financiamiento para los tratamientos?",
+        "faq6Answer": "Sí, tenemos planes de pago flexibles y opciones de financiamiento para que puedas lograr la sonrisa que deseas sin preocupaciones.",
+        "locationTitle": "Nuestra Clínica",
+        "hours": "Horario"
+      },
+      en: {
+        "title": "Smile Design Juarez | Excellence in Aesthetic Dentistry",
+        "heroTitle": "Excellence in Aesthetic Dentistry",
+        "heroText": "We transform smiles with advanced techniques and a personalized approach in Juarez.",
+        "contactBtn": "Book your consultation",
+        "callBtn": "Call",
+        "callIntlBtn": "From U.S.",
+        "servicesTitle": "Premium Services",
+        "service1": "Digital Smile Design",
+        "service1Desc": "Visualize your new smile before treatment with our 3D technology.",
+        "service2": "Porcelain Veneers",
+        "service2Desc": "The most natural and durable solution for a perfect smile.",
+        "service3": "Professional Whitening",
+        "service3Desc": "Immediate results with our state-of-the-art laser system.",
+        "service4": "Zirconium Crowns",
+        "service4Desc": "Maximum aesthetics and strength to restore your teeth.",
+        "service5": "Invisible Orthodontics",
+        "service5Desc": "Discreetly align your teeth with clear aligners.",
+        "service6": "Aesthetic Restorations",
+        "service6Desc": "We repair your teeth with materials that mimic natural enamel.",
+        "service7": "Facial Rejuvenation",
+        "service7Desc": "Combined treatments to harmonize smile and face.",
+        "galleryTitle": "Our Results",
+        "formTitle": "Personalized Consultation",
+        "nameLabel": "Full name",
+        "namePlaceholder": "Enter your full name",
+        "reasonLabel": "Service of interest",
+        "selectReason": "Select a service",
+        "option1": "Digital Smile Design",
+        "option2": "Porcelain Veneers",
+        "option3": "Professional Whitening",
+        "option4": "Zirconium Crowns",
+        "option5": "Invisible Orthodontics",
+        "option6": "Aesthetic Restorations",
+        "option7": "Facial Rejuvenation",
+        "option8": "Other",
+        "dayLabel": "Preferred day for consultation",
+        "selectDay": "Select a day",
+        "day1": "Monday",
+        "day2": "Tuesday",
+        "day3": "Wednesday",
+        "day4": "Thursday",
+        "day5": "Friday",
+        "day6": "Saturday",
+        "timeLabel": "Preferred time",
+        "selectTime": "Select a time",
+        "time1": "Morning (9am-12pm)",
+        "time2": "Afternoon (3pm-6pm)",
+        "time3": "Saturday (9am-2pm)",
+        "phoneLabel": "Contact phone",
+        "submitBtn": "Request consultation",
+        "faqTitle": "Frequently Asked Questions",
+        "faq1": "What makes your digital smile design different?",
+        "faq1Answer": "We use 3D technology to show you exactly how your smile will look after treatment, allowing you to actively participate in the design.",
+        "faq2": "How long do porcelain veneers last?",
+        "faq2Answer": "Our premium veneers can last 15 years or more with proper care. We'll teach you how to keep them perfect.",
+        "faq3": "Does teeth whitening damage teeth?",
+        "faq3Answer": "Our controlled laser system is safe and does not damage enamel. We use remineralizing gels to protect your teeth.",
+        "faq4": "Does placing dental veneers hurt?",
+        "faq4Answer": "The procedure is minimally invasive and we use local anesthesia for comfort. Most patients report only feeling pressure.",
+        "faq5": "How do I know if I need orthodontics before veneers?",
+        "faq5Answer": "At your initial consultation we evaluate if you need to align your teeth first for optimal results with veneers or other treatments.",
+        "faq6": "Do you offer financing for treatments?",
+        "faq6Answer": "Yes, we have flexible payment plans and financing options so you can achieve the smile you want without worries.",
+        "locationTitle": "Our Clinic",
+        "hours": "Hours"
+      }
+    };
+
+    // Función para cambiar idioma
+    function changeLanguage(lang) {
+      // Actualizar todos los elementos con data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      
+      // Actualizar placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) {
+          el.setAttribute('placeholder', translations[lang][key]);
+        }
+      });
+      
+      // Actualizar título de la página
+      document.title = translations[lang]['title'];
+      
+      // Actualizar opciones de select
+      document.querySelectorAll('option[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      
+      // Guardar preferencia
+      localStorage.setItem('preferredLang', lang);
+    }
+
+    // Configurar botón de traducción
+    document.getElementById('translateBtn').addEventListener('click', function() {
+      const currentLang = localStorage.getItem('preferredLang') || 'es';
+      const newLang = currentLang === 'es' ? 'en' : 'es';
+      changeLanguage(newLang);
+      
+      // Actualizar texto del botón
+      this.querySelector('span').textContent = newLang === 'es' ? 'ES/EN' : 'EN/ES';
+    });
+
+    // Inicializar con idioma guardado o español por defecto
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLang = localStorage.getItem('preferredLang') || 'es';
+      changeLanguage(savedLang);
+      
+      // Configurar texto del botón según el idioma actual
+      document.getElementById('translateBtn').querySelector('span').textContent = 
+        savedLang === 'es' ? 'ES/EN' : 'EN/ES';
+      
+      // Mostrar popup solo si no se ha mostrado antes
+      if (!localStorage.getItem('popupShown')) {
+        setTimeout(function() {
+          document.getElementById('hotSalePopup').classList.add('active');
+          localStorage.setItem('popupShown', 'true');
+        }, 3000);
+      }
+
+      // Suavizar el desplazamiento a las secciones
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
