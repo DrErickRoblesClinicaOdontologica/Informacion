@@ -55,6 +55,8 @@
       visibility: visible;
     }
 
+    
+
     .popup-container {
       background-color: var(--blanco);
       border-radius: 10px;
@@ -106,6 +108,34 @@
     }
 
     /* Header */
+   .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .facebook-btn {
+    background: linear-gradient(45deg, #1877f2, #add8e6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .facebook-btn:hover {
+    background: linear-gradient(45deg, #145dbf, #87ceeb);
+    transform: translateY(-2px);
+  }
+
+  .facebook-btn i {
+    font-size: 1rem;
+  }
     .header {
       background-color: var(--color-negro);
       padding: 15px 5%;
@@ -873,38 +903,17 @@
       <button class="close-popup" id="closePopup">&times;</button>
       <img src="Oferta.png" alt="Promoción Exclusiva - Diseño de Sonrisa 30% OFF" class="popup-img">
     </div>
-    <a href="https://www.facebook.com/profile.php?id=61576742612286" target="_blank" class="facebook-btn">
-    Página de Facebook
-  </a>
   </div>
-  </header>
 
-<style>
-  .facebook-btn {
-    background: linear-gradient(45deg, #1877f2, #add8e6);
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.9rem;
-    margin-top: 10px;
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-
-  .facebook-btn:hover {
-    background: linear-gradient(45deg, #145dbf, #87ceeb);
-    transform: translateY(-2px);
-  }
-
-  @media (min-width: 768px) {
-    .facebook-btn {
-      margin-top: 0;
-      margin-left: 20px;
-    }
-  }
-</style>
-
+  
+  <!-- Parte derecha: botón de Facebook -->
+  <div class="header-right">
+    <a href="https://www.facebook.com/profile.php?id=61576742612286" target="_blank" class="facebook-btn">
+      <i class="fab fa-facebook-f"></i> Página de Facebook
+    </a>
+  </div>
+</header>
+  
   <header class="header" id="mainHeader">
     <img src="logo.png" alt="Erick Robles Odontologia integral" class="logo">
     <div class="direccion-header">
