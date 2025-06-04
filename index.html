@@ -109,31 +109,30 @@
 
     /* Header */
 /* Botón Facebook circular */
-.facebook-btn {
+facebook-btn {
     background: #1877f2;
     color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    padding: 10px 15px;
+    border-radius: 30px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: fixed;
-    bottom: 80px; /* Ajusta este valor para moverlo más abajo */
-    right: 20px;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    text-decoration: none;
+    font-weight: 600;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     border: 2px solid white;
-}
-    
-.facebook-btn i {
-  font-size: 24px;
-}
+    margin-left: 15px;
+  }
 
-.facebook-btn:hover {
-  background: #145dbf;
-  transform: scale(1.1);
+  .facebook-btn i {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+
+  .facebook-btn:hover {
+    background: #145dbf;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
 }
   }
     .header {
@@ -236,14 +235,26 @@
     }
 
     /* Botones de Contacto */
-    .btn-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-      max-width: 400px;
-      margin: 30px auto 0;
-      animation: fadeInUp 1s ease 0.6s both;
-    }
+      .btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 400px;
+    margin: 30px auto 0;
+    animation: fadeInUp 1s ease 0.6s both;
+  }
+
+  .contact-buttons-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .facebook-container {
+    margin-top: 10px;
+  }
 
     .btn {
       display: flex;
