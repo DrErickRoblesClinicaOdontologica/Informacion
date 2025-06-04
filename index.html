@@ -967,70 +967,75 @@
   </section>
 
   <!-- Formulario de Contacto -->
-  <section id="contacto">
-    <div class="form-section">
-      <h2 class="form-title" data-i18n="formTitle">Consulta Personalizada</h2>
-      <form id="appointmentForm" action="https://formsubmit.co/erickrobles5821@gmail.com" method="POST">
-        <!-- Campos ocultos para FormSubmit -->
-        <input type="hidden" name="_subject" value="Nueva solicitud de cita - Erick Robles Odontologia Integral">
-        <input type="hidden" name="_next" value="https://smiledesignjuarez.github.io/confirmacion.html">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        
-        <div class="form-group">
-          <label for="nombre" class="form-label" data-i18n="nameLabel">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre" class="form-control" required data-i18n-placeholder="namePlaceholder" placeholder="Ingresa tu nombre completo">
-        </div>
-        
-        <div class="form-group">
-          <label for="motivo" class="form-label" data-i18n="reasonLabel">Servicio de interés</label>
-          <select id="motivo" name="motivo" class="form-control" required>
-            <option value="" disabled selected data-i18n="selectReason">Selecciona un servicio</option>
-            <option value="Diseño de Sonrisa" data-i18n="option1">Diseño de Sonrisa Digital</option>
-            <option value="Carillas" data-i18n="option2">Carillas de Porcelana</option>
-            <option value="Blanqueamiento" data-i18n="option3">Blanqueamiento Profesional</option>
-            <option value="Coronas" data-i18n="option4">Coronas de Zirconio</option>
-            <option value="Ortodoncia" data-i18n="option5">Ortodoncia Invisible</option>
-            <option value="Restauraciones" data-i18n="option6">Restauraciones Estéticas</option>
-            <option value="Rejuvenecimiento" data-i18n="option7">Rejuvenecimiento Facial</option>
-            <option value="Otro" data-i18n="option8">Otro</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="dia" class="form-label" data-i18n="dayLabel">Día preferido para consulta</label>
-          <select id="dia" name="dia" class="form-control" required>
-            <option value="" disabled selected data-i18n="selectDay">Selecciona un día</option>
-            <option value="Lunes" data-i18n="day1">Lunes</option>
-            <option value="Martes" data-i18n="day2">Martes</option>
-            <option value="Miércoles" data-i18n="day3">Miércoles</option>
-            <option value="Jueves" data-i18n="day4">Jueves</option>
-            <option value="Viernes" data-i18n="day5">Viernes</option>
-            <option value="Sábado" data-i18n="day6">Sábado</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="horario" class="form-label" data-i18n="timeLabel">Horario preferible</label>
-          <select id="horario" name="horario" class="form-control" required>
-            <option value="" disabled selected data-i18n="selectTime">Selecciona un horario</option>
-            <option value="Mañana (9am-12pm)" data-i18n="time1">Mañana (9am-12pm)</option>
-            <option value="Tarde (3pm-6pm)" data-i18n="time2">Tarde (3pm-6pm)</option>
-            <option value="Sábado (9am-2pm)" data-i18n="time3">Sábado (9am-2pm)</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="telefono" class="form-label" data-i18n="phoneLabel">Teléfono de contacto</label>
-          <input type="tel" id="telefono" name="telefono" class="form-control" required placeholder="Ingresa tu número de teléfono">
-        </div>
-        
-        <button type="submit" class="submit-btn">
-          <i class="fas fa-paper-plane"></i> <span data-i18n="submitBtn">Solicitar consulta</span>
-        </button>
-      </form>
-    </div>
-  </section>
+ <section id="contacto">
+  <div class="form-section">
+    <h2 class="form-title" data-i18n="formTitle">Consulta Personalizada</h2>
+    <form id="appointmentForm" action="https://formsubmit.co/erickrobles5821@gmail.com" method="POST">
+      <!-- Campos ocultos para FormSubmit -->
+      <input type="hidden" name="_subject" value="Nueva solicitud de cita - Erick Robles Odontologia Integral">
+      <input type="hidden" name="_next" value="https://smiledesignjuarez.github.io/confirmacion.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+
+      <div class="form-group">
+        <label for="nombre" class="form-label" data-i18n="nameLabel">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" class="form-control" required data-i18n-placeholder="namePlaceholder" placeholder="Ingresa tu nombre completo">
+      </div>
+
+      <div class="form-group">
+        <label for="motivo" class="form-label" data-i18n="reasonLabel">Servicio de interés</label>
+        <select id="motivo" name="motivo" class="form-control" required>
+          <option value="" disabled selected data-i18n="selectReason">Selecciona un servicio</option>
+          <option value="Diseño de Sonrisa" data-i18n="option1">Diseño de Sonrisa Digital</option>
+          <option value="Carillas de Porcelana" data-i18n="option2">Carillas de Porcelana</option>
+          <option value="Blanqueamiento" data-i18n="option3">Blanqueamiento Profesional</option>
+          <option value="Coronas" data-i18n="option4">Coronas de Zirconio</option>
+          <option value="Implantes Dentales">Implantes Dentales</option>
+          <option value="Rellenos Dentales">Rellenos Dentales</option>
+          <option value="Carillas de Resina">Carillas de Resina</option>
+          <option value="Extracciones">Extracciones</option>
+          <option value="Limpieza Dental">Limpieza Dental</option>
+          <option value="Endodoncia">Endodoncia</option>
+          <option value="Recorte de Encía">Recorte de Encía</option>
+          <option value="Otro" data-i18n="option8">Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dia" class="form-label" data-i18n="dayLabel">Día preferido para consulta</label>
+        <select id="dia" name="dia" class="form-control" required>
+          <option value="" disabled selected data-i18n="selectDay">Selecciona un día</option>
+          <option value="Lunes" data-i18n="day1">Lunes</option>
+          <option value="Martes" data-i18n="day2">Martes</option>
+          <option value="Miércoles" data-i18n="day3">Miércoles</option>
+          <option value="Jueves" data-i18n="day4">Jueves</option>
+          <option value="Viernes" data-i18n="day5">Viernes</option>
+          <option value="Sábado" data-i18n="day6">Sábado</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="horario" class="form-label" data-i18n="timeLabel">Horario preferible</label>
+        <select id="horario" name="horario" class="form-control" required>
+          <option value="" disabled selected data-i18n="selectTime">Selecciona un horario</option>
+          <option value="Mañana (9am-12pm)" data-i18n="time1">Mañana (9am-12pm)</option>
+          <option value="Tarde (3pm-6pm)" data-i18n="time2">Tarde (3pm-6pm)</option>
+          <option value="Sábado (9am-2pm)" data-i18n="time3">Sábado (9am-2pm)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="telefono" class="form-label" data-i18n="phoneLabel">Teléfono de contacto</label>
+        <input type="tel" id="telefono" name="telefono" class="form-control" required placeholder="Ingresa tu número de teléfono">
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <i class="fas fa-paper-plane"></i> <span data-i18n="submitBtn">Solicitar consulta</span>
+      </button>
+    </form>
+  </div>
+</section>
+
 
   <section id="faq">
     <h2 class="section-title reveal fade-bottom" data-i18n="faqTitle">Preguntas Frecuentes</h2>
