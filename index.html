@@ -18,6 +18,7 @@
       --sombra: 0 4px 12px rgba(0,0,0,0.15);
       --whatsapp: #25D366;
       --facebook: #1877f2;
+      --instagram: #E1306C;
     }
 
     * {
@@ -119,7 +120,32 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
+.instagram-btn {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--sombra);
+  border: 2px solid transparent;
+  font-size: 0.9rem;
+}
 
+.instagram-btn i {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.instagram-btn:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  opacity: 0.9;
+}
     /* Popup Promoción */
     .popup-overlay {
       position: fixed;
@@ -934,6 +960,14 @@
       <a href="https://www.facebook.com/profile.php?id=61576742612286" target="_blank" class="facebook-btn">
         <i class="fab fa-facebook-f"></i> Facebook
       </a>
+
+
+         <a href="https://www.instagram.com/dr_robles_odontologia_integral/" target="_blank" class="instagram-btn">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+
+
+      
     </div>
   </header>
 
