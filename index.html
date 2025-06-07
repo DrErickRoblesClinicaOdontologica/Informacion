@@ -92,63 +92,41 @@
 
 
 
-.social-icons {
+.social-icons-hero {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-left: 10px;
-}
-
-/* Responsive para celular */
-@media (max-width: 767px) {
-  .social-icons {
-    gap: 8px;
-    margin-top: 10px;
-  }
-
-  .icon-btn {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
-  }
-}
-
-
-
-    
-
-    .icon-btn {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+
+.social-icons-hero .icon-btn {
   width: 45px;
   height: 45px;
   border-radius: 50%;
   font-size: 22px;
-  color: var(--dorado-claro); /* Dorado claro que tienes ya definido */
-  background-color: var(--color-negro); /* Fondo negro elegante */
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1); /* fondo suave para que se vean bien en la imagen */
   border: 2px solid var(--color-dorado);
-  margin: 5px;
   transition: all 0.3s ease;
-  text-decoration: none;
 }
 
-.icon-btn:hover {
+.social-icons-hero .icon-btn:hover {
   background-color: var(--color-dorado);
   color: var(--color-negro);
 }
 
-/* Específico para que el icono tenga su color */
+/* Colores de iconos */
 .facebook-icon i {
-  color: #1877f2; /* Azul Facebook */
+  color: #1877f2;
 }
 
 .instagram-icon i {
-  color: #E1306C; /* Rosa Instagram */
+  color: #E1306C;
 }
 
 .whatsapp-icon i {
-  color: #25D366; /* Verde WhatsApp */
+  color: #25D366;
 }
 
 
@@ -1147,6 +1125,28 @@
   </div>
 
   <section class="hero">
+
+
+
+
+     <!-- Aquí metes los logos -->
+  <div class="social-icons-hero">
+    <a href="https://www.facebook.com/profile.php?id=61576742612286" target="_blank" class="icon-btn facebook-icon">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/dr_robles_odontologia_integral/" target="_blank" class="icon-btn instagram-icon">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/526147801653?text=Hola,%20quisiera%20información%20sobre%20sus%20servicios" target="_blank" class="icon-btn whatsapp-icon">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+
+
+
+
+    
     <div class="hero-content">
       <h1 data-i18n="heroTitle">Clinica Dental Con la mejor Experiencia</h1>
       <p data-i18n="heroText">Transformamos sonrisas con técnicas avanzadas y un enfoque personalizado en Ciudad Juárez Chihuahua, agenda tu cita hoy para tener una bella sonrisa!.</p>
