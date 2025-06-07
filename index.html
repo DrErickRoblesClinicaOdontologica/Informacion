@@ -62,6 +62,12 @@
       width: 100%;
     }
 
+
+
+
+
+
+    
     /* Header */
     .header {
       background-color: var(--color-negro);
@@ -77,9 +83,31 @@
       border-bottom: 1px solid var(--color-dorado);
     }
 
-    .header.scrolled {
-      padding: 10px 5%;
-    }
+   .header {
+  transition: transform 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0);
+}
+
+.header.scrolled {
+  padding: 10px 5%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+    .header {
+  position: fixed;
+  top: 5px;
+  width: 100%;
+  z-index: 1000;
+  /* resto de tus estilos... */
+}
+
+
+
+
+
+
+
+    
 
     .logo {
       height: 70px;
@@ -91,7 +119,15 @@
 
 
 
+.header {
+  transition: transform 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0);
+}
 
+.header.scrolled {
+  padding: 10px 5%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
     
 
 /* Header Social Icons */
@@ -1396,14 +1432,57 @@
       }
     });
 
-    // Header scroll effect
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 50) {
-        document.getElementById('mainHeader').classList.add('scrolled');
-      } else {
-        document.getElementById('mainHeader').classList.remove('scrolled');
-      }
-    });
+
+
+
+
+    
+   // Header scroll effect - Hide on scroll down, show on scroll up
+// let lastScroll = 0;
+// const header = document.getElementById('mainHeader');
+// const scrollThreshold = 100; // Cuántos píxeles de scroll antes de ocultar/mostrar
+
+//window.addEventListener('scroll', function() {
+ // const currentScroll = window.scrollY;
+
+
+
+
+
+
+  
+  
+  // Efecto de reducción al hacer scroll
+  if (currentScroll > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+  
+  // Ocultar/mostrar header basado en dirección de scroll
+  if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+    // Scroll hacia abajo - ocultar
+    header.style.transform = 'translateY(-100%)';
+  } else if (currentScroll < lastScroll) {
+    // Scroll hacia arriba - mostrar
+    header.style.transform = 'translateY(0)';
+  }
+  
+  lastScroll = currentScroll;
+});
+
+// Asegurarse de que el header sea visible al llegar al top
+window.addEventListener('scroll', function() {
+  if (window.scrollY === 0) {
+    header.style.transform = 'translateY(0)';
+  }
+});
+
+
+
+
+
+    
 
     // FAQ toggle
     document.querySelectorAll('.faq-item h3').forEach(item => {
@@ -1412,6 +1491,7 @@
       });
     });
 
+    
     // Scroll reveal
     function reveal() {
       const reveals = document.querySelectorAll('.reveal');
