@@ -201,10 +201,10 @@
 
     
 
-    .galeria-ads {
+   .galeria-ads {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px; /* un poco menor, para que estén más juntas */
+  gap: 10px;
   margin-top: 30px;
 }
 
@@ -212,9 +212,17 @@
   width: 100%;
   height: auto;
   display: block;
-  border: 2px solid var(--blanco); /* borde blanco para que resalten sobre fondo negro */
+  border: 2px solid var(--blanco);
   border-radius: 8px;
   object-fit: cover;
+  box-shadow: var(--sombra);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.galeria-ads img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 
@@ -1436,21 +1444,13 @@
 
 
 
-    
-    Header scroll effect - Hide on scroll down, show on scroll up
+   // Header scroll effect - Hide on scroll down, show on scroll up
 let lastScroll = 0;
-    const header = document.getElementById('mainHeader');
- const scrollThreshold = 100; // Cuántos píxeles de scroll antes de ocultar/mostrar
+const header = document.getElementById('mainHeader');
+const scrollThreshold = 100;
 
 window.addEventListener('scroll', function() {
   const currentScroll = window.scrollY;
-
-
-
-
-
-
-  
   
   // Efecto de reducción al hacer scroll
   if (currentScroll > 50) {
